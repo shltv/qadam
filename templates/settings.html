@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Qadam{% endblock %}
+
+{% block style %}
+#settings {
+width: 100%;
+margin-top: 20%;
+margin-left: 25%;
+}
+
+ul {
+list-style-type: none;
+}
+
+li a{
+font-family: sans-serif;
+text-decoration: none;
+color: rgb(131, 130, 133);
+font-size: 150%;
+display: block;
+padding-top: 5%;
+padding-bottom: 5%;
+padding-left: 10%;
+padding-right: 10%;
+}
+
+li a:visited{
+color: rgb(131, 130, 133);
+}
+{% endblock %}
+
+{% block content %}
+<table id="settings">
+    <tr valign="top">
+        <td>
+            <ul>
+              <li style="border: 2px solid silver;"><a href="#my profile">Парақшаны жөндеу</a></li>
+              <li style="border: 2px solid silver; border-top: none;"><a href="#email">Электронды почтаны ауыстыру</a></li>
+              <li style="border: 2px solid silver; border-top: none;"><a href="#password">Құпиясөзді ауыстыру</a></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+{% endblock %}

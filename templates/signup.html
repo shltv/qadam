@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккаунтты тіркеу</title>
+
+    <style>
+        body {
+        background-color: black;
+        }
+
+        #please {
+        color: white;
+        font-family: sans-serif;
+        font-size: 25px;
+        }
+
+        #logo {
+        border: 4px ridge gray;
+        border-radius: 5px;
+        }
+
+        #remember_me {
+        color: white;
+        font-family: sans-serif;
+        }
+
+        #signup {
+        width: 30%;
+        position: absolute;
+        left: 35%;
+        top: 6%;
+        text-align: center;
+        }
+
+        .input {
+        padding: 6px;
+        width: 70%;
+        font-size: 20px;
+        }
+
+        #fullname {
+        border: 1px solid silver;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        }
+
+        #username {
+        border: 1px solid silver;
+        border-bottom: none;
+        border-top: none;
+        }
+
+        #email {
+        border: 1px solid silver;
+        }
+
+        #confirm_password {
+        border: 1px solid silver;
+        border-top: none;
+        }
+
+        #confirm_password {
+        border: 1px solid silver;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-top: none;
+        }
+
+        #password {
+        border: 1px solid silver;
+        border-top: none;
+        }
+
+        .text {
+        color: white;
+        font-size: 100%;
+        }
+
+        #link {
+        color: blue;
+        }
+
+        #button{
+        background-color: rgb(0,123,255);
+        color: white;
+        padding: 2%;
+        padding-right: 7%;
+        padding-left: 7%;
+        border: none;
+        border-radius: 5px;
+        width: 73%;
+        font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<form id="signup">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+    <tr><p style="font-family: sans-serif; color: red; text-align: center;">{{ messages[-1] }}</p></tr>
+        {% endif %}
+    {% endwith %}
+    <tr><img style="width: 30%;" id="logo" src="https://document-export.canva.com/DAD8DrKTBRI/69/thumbnail/0001-6580101522.png" alt="qadam logo"></tr><br><br>
+    <tr><input class="input" id="fullname" type="text" name="fullname" placeholder="Толық аты-жөні" autofocus ></tr><br>
+    <tr><input class="input" id="username" type="text" name="username" placeholder="Қолданушы аты" autofocus></tr><br>
+    <tr><input class="input" id="email" type="email" name="email" placeholder="Электронды почта" autofocus></tr><br>
+    <tr><input class="input" id="password" type="password" name="password" placeholder="Құпиясөз"></tr><br>
+    <tr><input class="input" id="confirm_password" type="password" name="confirm_password" placeholder="Құпиясөзді растаңыз"></tr><br><br>
+    <tr><input type="checkbox" name="remember_me" value="Remember-me"><label id="remember_me">Есте сақтау</label></tr><br><br>
+    <tr><label class="text">Аккаунтыңыз бар па? </label><a class="text" id="link" href="{{link}}/login"> Кіру</a></tr><br><br>
+    <tr><button id="button" type="submit" formmethod="post">Тіркелу</button></tr>
+</form>
+</body>
+</html>

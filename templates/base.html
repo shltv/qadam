@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock%}</title>
+
+    <style>
+        {% block style %}
+        {% endblock %}
+        #header {
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        background-color: black;
+        width: 100%;
+        z-index: 10;
+        }
+
+        #profile {
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 170%;
+        color: white
+        border: none;
+        position: fixed;
+        top: 1.5%;
+        right: 20px;
+        padding: 15px;
+        padding-right: 2%;
+        padding-left: 2%;
+        }
+
+
+        #profile:visited{
+        text-decoration: none;
+        color: white;
+        }
+
+        #profile:hover {
+        color: rgb(85, 83, 255);
+        }
+
+        #logo {
+        width: 6%;
+        margin-left: 2%;
+        object-fit: cover;
+        }
+
+        #page {
+        position: absolute;
+        left: 0%;
+        top: 12.5%;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <form>
+        <img id="logo" src="https://document-export.canva.com/DAD8DrKTBRI/69/thumbnail/0001-6580101522.png" alt="qadam logo">
+        <a id="profile" href="{{link}}/user/{{User.username}}" formmethod="post">{{User.fullname.split()[1]}}</a>
+    </form>
+</div>
+<div id="page">
+{% block content %}
+{% endblock %}
+</div>
+</body>
+</html>

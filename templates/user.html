@@ -1,0 +1,78 @@
+{% extends "base.html"%}
+
+{% block title %}{{User.username}} — Qadam{% endblock %}
+
+{% block style %}
+.avatar{
+border-radius: 10px;
+width: 100%;
+height: 100%;
+padding: 2%;
+}
+
+#user{
+width: 70%;
+margin-top: 5%;
+margin-left: 15%;
+}
+
+.texts {
+font-size: 200%;
+font-family: sans-serif;
+}
+
+#username {
+text-align: left;
+font-size: 150%;
+color: blue;
+}
+
+#links {
+width: 70%;
+margin-top: 10%;
+margin-left: 15%;
+}
+
+.links {
+font-size: 120%;
+color: rgb(41, 39, 255);
+}
+
+
+.links:hover {
+color: rgb(112, 112, 255);
+}
+
+#link {
+color: black;
+}
+{% endblock %}
+
+{% block content %}
+<table id="user" >
+    <tr valign="top">
+        {% if User.avatar %}
+        <td style="width: 12%;"><img class="avatar" src="{{ User.avatar }}"></td>
+        {% else %}
+        <td style="width: 20%;"><label class="avatar" style="background-color: rgb(85, 83, 255);color: white; font-size: 500%;">{{User.fullname.split()[0][0] + User.fullname.split()[1][0]}}</label></td>
+        {% endif %}
+        <td style="padding: 2%;"><label class="texts">{{ User.fullname }}</label><br>
+            <label class="texts" id="username">{{User.username}}</label>
+            {% if User.about %}
+            <p id="about_me" class="texts">{{ User.about }}</p>
+            {% endif %}
+            <hr>
+        </td>
+    </tr>
+</table>
+<table id="links">
+<tr valign="top">
+    <td style="width: 40%;">
+        <a class="links" id="link" href="{{link}}/user/{{User.username}}">Менің парақшам</a><br><br>
+        <a class="links" href="{{link}}/user/{{User.username}}/my_courses">Менің сабақтарым</a><br><br>
+        <a class="links" href="{{link}}/user/{{User.username}}/settings">Жөндеу</a><br><br>
+    </td>
+</tr>
+    <!--USER PROFILE ENDS -->
+</table>
+{% endblock %}
