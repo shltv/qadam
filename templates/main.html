@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/9HQ1cWy/lil-Logo-removebg-preview.png" alt="logo"/>
     <title>Qadam — тегін онлайн-сабақтар</title>
     <style>
         body {
@@ -48,7 +49,7 @@
         padding-bottom: 10%;
         width: 100%;
         height: 80%;
-        background-image: url("https://klike.net/uploads/posts/2019-06/1561182942_2.jpg");
+        background-image: url("https://i.ibb.co/k4sLtZV/background.jpg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         }
@@ -124,17 +125,17 @@
          .image {
          top: 10%;
          width: 100%;
-         height: 30%;
          overflow: hidden;
          }
 
          .course_button{
+         text-family: sans-serif;
          text-decoration: none;
          color: black;
          font-size: 60%;
-         padding: 1px;
-         padding-right: 10px;
-         padding-left: 10px;
+         padding: 1%;
+         padding-right: 10%;
+         padding-left: 10%;
          border: 1px solid black;
          border-radius: 6px;
          }
@@ -142,12 +143,17 @@
          .course_button:visited{
          color: black;
          }
+
+         .course_name {
+         font-family: sans-serif;
+         text-weight: bold;
+         }
     </style>
 </head>
 <body id="body">
 <div id="header">
     <form>
-        <img id="logo" src="https://document-export.canva.com/DAD8DrKTBRI/69/thumbnail/0001-6580101522.png" alt="qadam logo">
+        <img id="logo" src="https://i.ibb.co/Kmg5tWW/logo.png" alt="qadam_logo">
         <button id="study_button" type="submit" formmethod="post">Оқуды бастау</button>
     </form>
 </div>
@@ -155,14 +161,14 @@
 <div id="about">
     <label id="text1">XXI ғасырға сай білімді тегін алыңыз</label><br><br>
     <label id="text2">Еліміздің үздіктерінен онлайн-сабақтар</label>
-    <p><a id="button" href="{{link}}/catalog"><strong>Сабақтарды көру</strong></a></p>
+    <p><a id="button" href="#catalog"><strong>Сабақтарды көру</strong></a></p>
 </div>
 <div id="info">
-    <center><p>ЖОО-лар, жеке авторлар, компаниялар құрған сабақтарды <strong>Qadam-да тегін оқыңыз</strong></p></center>
+    <center><p id="catalog">ЖОО-лар, жеке авторлар, компаниялар құрған сабақтарды <strong>Qadam-да тегін оқыңыз</strong></p></center>
 </div>
 
 <div class="flex-container">
-  <div><p style="font-size: 50%;">Авторлар ұсынады</p><img class="image" src="data:image/jpeg;base64,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"><br>
+  <div><label class="course_name">C++ тілінің негіздері</label><img class="image" src="https://i.ibb.co/qDFvvt7/c-plus-plus.png"><br>
       <hr><a class="course_button" href="{{link}}/course/c_plus_plus">Сабақтарды оқуды бастау</a></div>
   <div>2</div>
   <div>3</div>

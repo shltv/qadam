@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}if операторы - Qadam{% endblock %}
+
+{% block style %}
+#main_body {
+font-family: sans-serif;
+font-size: 150%;
+width: 80%;
+margin-left: 10%;
+}
+
+input {
+font-size: 120%;
+width: 10%;
+}
+
+#submit{
+margin-bottom: 5%;
+margin-left: 15%;
+font-family: sans-serif;
+padding: 2%;
+font-size: 20px;
+margin-bottom: 5%;
+background-color: skyblue;
+color: blue;
+border: none;
+border-radius: 10px;
+}
+{% endblock %}
+
+{% block content %}
+<div id="main_body">
+    <form>
+        <ol><br>
+            <li style="color: blue">Экранда "I love C++" басып шығару үшін кодтың жетіспейтін бөліктерін толтырыңыз.</li><br>
+
+            <input type="text"><label style="padding-left: 6px; line-height: 40px;">namespace std;</label><br>
+            <input type="text"><label style="padding-left: 6px; line-height: 40px;">main()</label><br>
+            <label style="padding-left: 6px; line-height: 40px;">{</label><br>
+            <label style="padding-left: 6px; line-height: 40px;">cout << "I love C++" << endl;</label><br>
+            <input type="text"><label style="padding-left: 6px; line-height: 40px;">0;</label><br>
+            <label style="padding-left: 6px; line-height: 40px;">}</label><br>
+            <hr><br><br>
+
+            <li style="color: blue;">int түріндегі екі айнымалыны жариялайтын және олардың сомасын экранға шығаратын кодты енгізіңіз.</li><br>
+            <label style="padding-left: 6px; line-height: 40px;">int x = 4;</label><br>
+            <input style="width: 5%;" type="text"><label style="padding-left: 6px; line-height: 40px;">y = 7;</label><br>
+            <label style="padding-right: 6px; line-height: 40px;">int sum = x</label><input style="width: 3%;" type="text"><label style="padding-left: 6px; line-height: 40px;">y;</label><br>
+            <label style="padding-right: 6px; line-height: 40px;">cout << "sum equals to " << </label><input type="text"><label style="padding-left: 6px; line-height: 40px;"><< endl;</label><br>
+            <hr><br><br>
+
+            <li style="color: blue;">sum айнымалы ретінде жариялау үшін кодтың жетіспейтін бөліктерін толтырыңыз, оған 21 + 7 мәнін беріп, оның мәнін басып шығарыңыз.</li><br>
+            <label style="padding-left: 6px; line-height: 40px;">int sum;</label><br>
+            <input style="width: 5%;" type="text"><label style="padding-left: 6px; line-height: 40px;">= 21 + 7;</label><br>
+            <input style="width: 5%;" type="text"><label style="padding-right: 6px; line-height: 40px;"><< "sum is equal to " << </label><input style="width: 5%;" type="text"><label style="padding-left: 6px; line-height: 40px;"><< endl;</label><br>
+            <hr><br><br>
+        </ol>
+        <button id="submit" type="submit" formmethod="post">Жауап беру</button>
+    </form>
+</div>
+{% endblock%}

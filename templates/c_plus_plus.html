@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}C++ тілінің негіздері - Qadam{% endblock %}
+
+{% block style %}
+#title {
+background-color: rgb(45, 43, 135);
+color: white;
+font-family: sans-serif;
+width: 100%;
+padding-top: 5%;
+padding-bottom: 5%;
+}
+
+#about_course {
+margin-left: 3%;
+font-family: sans-serif;
+width: 90%;
+}
+
+.list {
+font-size: 130%;
+}
+
+#about_c{
+font-family: sans-serif;
+font-size: 130%;
+}
+
+#stick_join{
+position: sticky;
+top: 29%;
+}
+
+#join_button {
+margin-left: 30%;
+padding-top: 2%;
+padding-bottom: 2%;
+padding-left: 10%;
+padding-right: 10%;
+background-color: rgb(85, 83, 255);
+color: white;
+font-family: sans-serif;
+font-size: 200%;
+border: 2px ridge blue;
+border-radius: 10px;
+}
+
+#join_button:hover {
+background-color: rgb(45, 43, 215);
+}
+
+#stick_price {
+position: sticky;
+top: 8rem;
+margin-left: 30%;
+width: 100%;
+}
+
+{% endblock %}
+
+{% block content %}
+<div id="title">
+    <center><h1>C++ тілінің негіздері</h1></center>
+</div>
+
+<table id="about_course">
+    <tr>
+        <td style="width: 60%"><p style="font-size: 200%;">Бұл сабақтар сізге С++ тілінің негіздерін үйретеді.</p><hr><br>
+            <p id="about_c">
+                <strong style="font-size: 130%">С++ тілінің ерекшеліктері</strong><br><br>
+                <strong>Көлемінің шағындығы</strong><br>
+                    С++ тілінің синтаксистік ережелері басқа тілдерге қарағанда аз,оның компиляторын 256 Кб көлем арқылы-ақ
+                    жазып шығуға болады.Мұндағы операциялық әрекеттер,олардың комбинациясы жетерлік,бірақ қордағы түйінді
+                    сөздер саны да көп емес, Дэннис Ритчи жасаған алғашқы С++ тілінде тек 27 түйінді сөз болды,кейіннен ANSI C
+                    стандартында тағы бірнеше сөз қосылды.
+
+                <br><br><strong>Тілдің командалар жиыны</strong><br>
+                    Microsoft С/С++ нұсқасында тағы 19 командалар мен түйінді сөздер қосылды,соның нәтижесінде олар 66 болды.
+                    Басқа программалау тілдердегі функциялар С++ тілінде жоқ,мысалы,енгізу-шығару операторлары да кездеспейді,
+                    оның есесіне кітапханалық әр түрлі функциялар саны жеткілікті.
+                <br><br><strong>Жылдам істейтіндігі</strong><br>
+                    С++ компиляторлары жасаған программа кодтары шағын,әрі жылдам істейді,оның үстіне тілдің аппараттық
+                    құралдарға жақындығы ассемблер тіліменен қатар жылдамдықпен жұмыс істеуге мүмкіндік береді.
+            </p><hr><br><hr>
+
+            <h4 class="list">Мазмұны</h4>
+            <ol>
+                <li class="list">if операторы</li>
+                <li class="list">else операторы</li>
+                <li class="list">while циклы</li>
+                <li class="list">for циклы</li>
+                <li class="list">do ... while циклы</li>
+                <li class="list">switch опрераторы</li>
+                <li class="list">Шартты операторларды біріктіру </li>
+            </ol>
+        </td>
+
+        <td valign="top">
+            <p id="stick_price" style="font-family: sans-serif; font-size: 170%;">Тегін</p>
+            <form id="stick_join"><button id="join_button" formmethod="post" type="submit">Сабаққа қосылу</button></form>
+        </td>
+    </tr>
+</table>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}if операторы - Qadam{% endblock %}
+
+{% block style %}
+
+#main_body{
+font-family: sans-serif;
+font-size: 120%;
+margin-left: 10%;
+width: 80%;
+}
+
+{% endblock %}
+
+{% block content %}
+<div id="main_body">
+    <p>
+        If операторы шарт шынайы болса, кейбір кодты орындау үшін қолданылады.
+        <div style="border-radius: 10px; color: white; width: 13%; background-color: rgb(85, 83, 255); padding-left: 6px; padding-top: 6px;">
+            if (condition) {<br>
+            statements<br>
+            }
+        </div><br>
+
+        Шарт қандай өрнек есептелетінін анықтайды. Егер шарт шынайы болса, онда фигуралық жақшаға салынған операторлар орындалады.<br>
+        Егер шарт жалған болса, операторлар елемейді және бағдарлама if операторларының денесінен кейін жұмысын жалғастырады.<br><br>
+        Шарттарды бағалау үшін реляциялық операторларды пайдаланыңыз.<br><br>
+
+        <br><u>Мысалы:</u><br><br>
+        <div style="border-radius: 10px; color: white; width: 13%; background-color: rgb(85, 83, 255); padding-left: 6px; padding-top: 6px;">
+            if (7 > 4) {<br>
+            cout << "Yes"; <br>
+            }<br>
+            // Output "Yes"<br>
+        </div><br>
+
+        If операторы (7>4) шартын бағалайды, оны шынайы табады және содан кейін cout операторы орындайды.<br>
+        Егер біз greater операторын less than (7<4) операторына өзгертсек, оператор орындалмайды және ештеңе басып шығарылмайды.<br>
+        If операторында көрсетілген шарт үтір нүктесін талап етпейді.<br><br>
+
+        Қосымша реляциялық операторлар:<br><br>
+        <img src="https://i.ibb.co/FwBBtTk/image.png" style="border: 2px solid rgb(85, 83, 255);"><br>
+
+        <br><u>Мысалы:</u><br><br>
+        <div style="border-radius: 10px; color: white; width: 13%; background-color: rgb(85, 83, 255); padding-left: 6px; padding-top: 6px;">
+            if (10 == 10) {<br>
+            cout << "Yes";<br>
+            }<br>
+            // Output "Yes"<br>
+        </div><br>
+
+        Not equal to операторы операндаларды есептейді, олардың тең немесе жоқ екенін анықтайды. Егер операндалар тең болмаса, шарт true ретінде есептеледі.
+
+        <br><u>Мысалы:</u><br><br>
+        <div style="border-radius: 10px; color: white; width: 13%; background-color: rgb(85, 83, 255); padding-left: 6px; padding-top: 6px;">
+            if (10 != 10) {<br>
+            cout << "Yes";<br>
+            }<br>
+        </div><br>
+
+        Жоғарыда көрсетілген шарт false мәнін қабылдайды және Код блогы орындалмайды.<br><br>
+
+        Сіз if операторында айнымалыларды салыстыру үшін реляциялық операторларды пайдалана аласыз.<br>
+
+        <br><u>Мысалы:</u><br><br>
+        <div style="border-radius: 10px; color: white; width: 25%; background-color: rgb(85, 83, 255); padding-left: 6px; padding-top: 6px;">
+            int a = 55;<br>
+            int b = 33;<br>
+            if (a > b) {<br>
+            cout << "a is greater than b";<br>
+            }<br>
+            // Output "a is greater than b"<br>
+        </div><br>
+    </p>
+    <form><button type="submit" formmethod="post"
+            style=" padding: 2%; font-size: 20px; margin-bottom: 5%; background-color: skyblue; color: blue;
+            border: none; border-radius: 10px;">Келесі</button></form>
+</div>
+{% endblock%}

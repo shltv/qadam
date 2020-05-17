@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Qadam{% endblock %}
+{% block title %}Жөндеу-Qadam{% endblock %}
 
 {% block style %}
 #settings {
 width: 100%;
-margin-top: 20%;
-margin-left: 25%;
+margin-top: 15%;
+margin-left: 15%;
 }
 
 ul {
@@ -27,6 +27,43 @@ padding-right: 10%;
 li a:visited{
 color: rgb(131, 130, 133);
 }
+
+#tables {
+width: 100%;
+margin-top: -50%;
+margin-left: 140%;
+}
+
+.heading {
+color: black;
+font-family: sans-serif;
+}
+
+.input {
+font-family: sans-serif;
+font-size: 100%;
+padding: 2%;
+width: 90%;
+height: 40px;
+border-radius: 4px;
+border: 2px solid silver;
+}
+
+.save {
+border: 2px outset Lime;
+border-radius: 6px;
+padding-top: 2%;
+padding-bottom: 2%;
+padding-left: 10%;
+padding-right: 10%;
+font-family: sans-serif;
+font-size: 120%;
+background-color: Lime;
+}
+
+.save:hover{
+border: 2px inset LimeGreen;
+}
 {% endblock %}
 
 {% block content %}
@@ -34,11 +71,64 @@ color: rgb(131, 130, 133);
     <tr valign="top">
         <td>
             <ul>
-              <li style="border: 2px solid silver;"><a href="#my profile">Парақшаны жөндеу</a></li>
+              <li style="border: 2px solid silver;"><a href="#my_profile">Парақшаны жөндеу</a></li>
               <li style="border: 2px solid silver; border-top: none;"><a href="#email">Электронды почтаны ауыстыру</a></li>
               <li style="border: 2px solid silver; border-top: none;"><a href="#password">Құпиясөзді ауыстыру</a></li>
             </ul>
         </td>
     </tr>
 </table>
+
+<div id="tables">
+    <h1 style="font-family: sans-serif; color: rgb(85, 83, 255);">{{User.fullname}}</h1>
+    <h3 style="font-family: sans-serif; color: rgb(85, 83, 255);"><u>{{User.username}}</u></h3>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+    <p style="font-family: sans-serif; color: red; text-align: left;">{{ messages[-1] }}</p>
+        {% endif %}
+    {% endwith %}
+
+    <form method="post">
+        <table id="main_info">
+            <tr valign="top" id="my_profile">
+                <td>
+                    <h1 class="heading">Парақшадағы ақпарат</h1><br><br>
+                    <input class="input" name="username" type="text" value="{{User.username}}" placeholder="Қолданушы есімі"><br><br>
+                    <input class="input" name="fullname" type="text" value="{{User.fullname}}" placeholder="Толық аты-жөніңіз"><br><br>
+                    <input class="input" name="pass_to_confirm_username" type="password" placeholder="Құпиясөз"><br><br>
+                    <button class="save" type="submit" formmethod="post">Сақтау</button>
+                </td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table id="email_info">
+            <tr valign="top" id="email">
+                <td>
+                    <h1 class="heading">Электронды почтаны ауыстыру</h1><br><br>
+                    <input class="input" name="old_email" type="email" placeholder="Ескі электронды почтаңыз"><br><br>
+                    <input class="input" name="new_email" type="email" placeholder="Жаңа почтаңыз"><br><br>
+                    <input class="input" name="pass_to_confirm_email" type="password" placeholder="Құпиясөз"><br><br>
+                    <button class="save" type="submit" formmethod="post">Сақтау</button>
+                </td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table id="pass_info">
+            <tr valign="top" id="password">
+                <td>
+                    <h1 class="heading">Құпиясөзді ауыстыру</h1><br><br><br>
+                    <input class="input" name="old_pass" type="password" placeholder="Ескі құпиясөзіңіз"><br><br>
+                    <input class="input" name="new_pass" type="password" placeholder="Жаңа құпиясөз"><br><br>
+                    <input class="input" name="new_pass_confirm" type="password"  placeholder="Жаңа құпиясөзді растаңыз"><br><br>
+                    <button class="save" type="submit" formmethod="post">Сақтау</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 {% endblock %}

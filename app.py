@@ -34,6 +34,16 @@ class Users(db.Model):
         self.hash_pass = password
 
 
+class Courses(db.Model):
+    id = db.Column("id", db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    course_id = db.Column(db.Integer)
+
+    def __init__(self, user_id, course_id=1):
+        self.user_id = user_id
+        self.course_id = course_id
+
+
 @app.route("/")
 def welcome():
     session["link"] = "http://127.0.0.1:8080/kz"
@@ -119,7 +129,7 @@ def signup():
             User = Users(fullname=fullname, email=email, username=username, password=password)
             db.session.add(User)
             db.session.commit()
-            return redirect(url_for("user", username=username))
+            return redirect(url_for("user", username=username, link=session["link"],))
 
 
 @app.route("/kz/user/<username>", methods=["GET", "POST"])
@@ -135,14 +145,135 @@ def user(username):
 
 @app.route("/kz/user/<username>/settings", methods=["GET", "POST"])
 def settings(username):
-    session["link"]="http://127.0.0.1:8080/kz"
+    session["link"] = "http://127.0.0.1:8080/kz"
     if "username" not in session:
         return redirect(url_for("welcome"))
     else:
         if request.method == "GET":
-            return render_template("settings.html", User=Users.query.filter_by(username=session["username"]).first())
+            return render_template("settings.html", link=session["link"],
+                                   User=Users.query.filter_by(username=session["username"]).first())
         else:
-            return redirect(url_for("user"))
+            User = Users.query.filter_by(username=session["username"]).first()
+
+            # username
+            username = request.form["username"]
+            fullname = request.form["fullname"]
+            if username == session["username"] and fullname == session["fullname"]:
+                pass
+            else:
+                if (Users.query.filter_by(username=username).all() and username != session["username"]) \
+                        or (len(username.split()) == 0):
+                    flash("Бұл қолданушы ат бос емес немесе қате")
+                    return render_template("settings.html", link=session["link"],
+                                           User=Users.query.filter_by(username=session["username"]).first())
+                else:
+                    if len(fullname.split()) == 0:
+                        flash("Аты-жөніңіз қате енгізілді")
+                        return render_template("settings.html", link=session["link"],
+                                               User=Users.query.filter_by(username=session["username"]).first())
+                    else:
+                        pass_to_confirm_username = request.form["pass_to_confirm_username"]
+                        if check_password_hash(User.hash_pass, pass_to_confirm_username):
+                            User.username = username
+                            User.fullname = fullname
+                            session["username"] = username
+                            session["fullname"] = fullname
+                            db.session.commit()
+                        else:
+                            flash(f"Қате құпиясөз енгіздіңіз {fullname}")
+                            return render_template("settings.html", link=session["link"],
+                                                   User=Users.query.filter_by(username=session["username"]).first())
+
+            # email
+            old_email = request.form["old_email"]
+            new_email = request.form["new_email"]
+            if len(old_email) == 0 and len(new_email) == 0:
+                pass
+            else:
+                if old_email != User.email:
+                    flash("Электронды почта қате")
+                    return render_template("settings.html",
+                                           User=Users.query.filter_by(username=session["username"]).first())
+                else:
+                    pass_to_confirm_email = request.form["pass_to_confirm_email"]
+                    if check_password_hash(User.hash_pass, pass_to_confirm_email):
+                        User.email = new_email
+                        session["email"] = new_email
+                    else:
+                        flash("Қате құпиясөз енгіздіңіз email")
+                        return render_template("settings.html",
+                                               User=Users.query.filter_by(username=session["username"]).first())
+
+            # password
+            old_pass = request.form["old_pass"]
+            new_pass = request.form["new_pass"]
+            new_pass_confirm = request.form["new_pass_confirm"]
+            if len(old_pass) == 0 and new_pass == "" and new_pass_confirm == "":
+                pass
+            else:
+                if check_password_hash(User.hash_pass, old_pass):
+                    if new_pass.isalpha() or new_pass.isdigit():
+                        flash("Құпиясөз сандар мен әріптерден тұруы қажет")
+                        return render_template("settings.html", User=Users.query.filter_by(
+                            username=session["username"]).first())
+                    if len(new_pass) < 8:
+                        flash("Құпиясөз ұзындығы 8 символдан артық болуы қажет")
+                        return render_template("settings.html", User=Users.query.filter_by(
+                            username=session["username"]).first())
+                    if new_pass != new_pass_confirm:
+                        flash("Құпиясөзді дұрыс растамадыңыз")
+                        return render_template("settings.html", User=Users.query.filter_by(
+                            username=session["username"]).first())
+                else:
+                    flash("Қате құпиясөз енгіздіңіз")
+                    return render_template("settings.html",
+                                           User=Users.query.filter_by(username=session["username"]).first())
+        return redirect(url_for("user", username=session["username"]))
+
+
+@app.route("/kz/course/c_plus_plus", methods=["GET", "POST"])
+def c_plus_plus():
+    session["link"] = "http://127.0.0.1:8080/kz"
+    User = Users.query.filter_by(fullname=session["fullname"]).first()
+    if request.method == "GET":
+        return render_template("c_plus_plus.html", User=User, link=session["link"])
+    else:
+        lesson = Courses(user_id=User.id)
+        db.session.add(lesson)
+        db.session.commit()
+        return redirect(url_for("lesson_1"))
+
+
+@app.route("/kz/course/c_plus_plus/lesson_1", methods=["GET", "POST"])
+def lesson_1():
+    session["link"] = "http://127.0.0.1:8080/kz"
+    User = Users.query.filter_by(fullname=session["fullname"]).first()
+    if request.method == "GET":
+        return render_template("study_c_pp_lesson_1.html", User=User, link=session["link"])
+    else:
+        return redirect(url_for("test_1"))
+
+
+@app.route("/kz/course/c_plus_plus/lesson_1/test_1", methods=["GET", "POST"])
+def test_1():
+    session["link"] = "http://127.0.0.1:8080/kz"
+    User = Users.query.filter_by(fullname=session["fullname"]).first()
+    if request.method == "GET":
+        return render_template("study_c_pp_test_1.html", User=User, link=session["link"])
+    else:
+        return redirect(url_for("test_2"))
+
+
+
+
+
+@app.route("/logout")
+def logout():
+    session.pop("username", None)
+    session.pop("fullname", None)
+    session.pop("email", None)
+    session.pop("hash_pass", None)
+    return redirect(url_for("welcome"))
 
 
 if __name__ == "__main__":

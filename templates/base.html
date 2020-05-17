@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock%}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/9HQ1cWy/lil-Logo-removebg-preview.png" alt="logo"/>
 
     <style>
         {% block style %}
@@ -56,7 +57,7 @@
 <body>
 <div id="header">
     <form>
-        <img id="logo" src="https://document-export.canva.com/DAD8DrKTBRI/69/thumbnail/0001-6580101522.png" alt="qadam logo">
+        <a href="{{link}}"><img id="logo" src="https://i.ibb.co/Kmg5tWW/logo.png" alt="qadam logo"></a>
         <a id="profile" href="{{link}}/user/{{User.username}}" formmethod="post">{{User.fullname.split()[1]}}</a>
     </form>
 </div>
